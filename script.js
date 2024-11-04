@@ -1,7 +1,7 @@
 const tareas = []
 
 function seleccionarOpcion(){
-    let opciones = "1. Agregar una tarea\n2. Eliminar tarea\n3. Mostrar tareas"
+    let opciones = "1. Agregar una tarea\n2. Eliminar tarea\n3. Mostrar tareas \n4. Editar Tareas \n5. Salir"
     let seleccion
         do {
             seleccion = Number(prompt("¡Hola! Bienvenido a su Lista de Tareas\n¿Que desea realizar?\n" + opciones))
@@ -19,8 +19,11 @@ function seleccionarOpcion(){
                     console.log("Selecciono la 3")
                 break;
                 case 4:
-                    alert("Adiós")
+                    editarTarea()
                     console.log("Selecciono la 4")
+                break;
+                case 5:
+                    alert("¡Hasta Luego!")
                 break;
                 default:
                     alert("Opcion invalida")
@@ -32,15 +35,16 @@ function seleccionarOpcion(){
 
 function mostrarTareas() {
     if (tareas.length === 0) {
-        alert("No hay tareas")
+        alert("No hay tareas");
     } else {
-        let listaTareas = "Tareas pendientes:\n"
-        for (let i = 0; i < tareas.length; i++){
-            listaTareas += (i + 1) + "." + tareas[i] + "\n"
+        let listaTareas = "Tareas pendientes:\n";
+        for (let i = 0; i < tareas.length; i++) {
+            listaTareas += (i + 1) + ". " + tareas[i] + "\n";
         }
-        alert(listaTareas)
+        alert(listaTareas);
     }
 }
+
 
 function agregarTarea(){
     let nuevaTarea = prompt("¿Que tarea desea agregar?")
@@ -52,6 +56,8 @@ function agregarTarea(){
     let deseaAgregarMas = confirm("¿Quiere agregar mas tareas?")
     if(deseaAgregarMas){
         agregarTarea()
+    } else {
+        seleccionarOpcion()
     }
 }
 
